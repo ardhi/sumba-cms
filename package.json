@@ -1,0 +1,24 @@
+{
+  "name": "sumba-page",
+  "version": "1.0.0",
+  "description": "Page support for Waibu MPA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ardhi/sumba-page.git"
+  },
+  "keywords": [
+    "waibu",
+    "page",
+    "sumba",
+    "bajo",
+    "framework",
+    "page"
+  ],
+  "author": "Ardhi Lukianto <ardhi@lukianto.com>",
+  "license": "MIT"
+}
