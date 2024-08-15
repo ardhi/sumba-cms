@@ -1,0 +1,37 @@
+import path from 'path'
+
+function handlePage (ofile, base, req) {
+  const { fs } = this.app.bajo.lib
+  const { last } = this.app.bajo.lib._
+  const types = ['', ...this.types]
+  const type = last(base.split('/'))
+
+  let file
+  for (const type of types) {
+    const check = `${ofile}${type}`
+    if (fs.existsSync(check)) {
+      file = check
+      break
+    }
+  }
+  if (!file) throw this.error('notfound')
+  const main = this.pageDetails(file, base, req)
+  const siblings = this.pageSiblings(file, base, req)
+  const children = this.pageChildren(file, base, req)
+  const up = this.pageUp(file, base, req)
+  const index = this.pageIndex(file, base, req)
+  const result = { type, main, siblings, children, up, index }
+  return result
+}
+
+async function pageInfo (req, base = '') {
+  const { trim, merge } = this.app.bajo.lib._
+  const { fs } = this.app.bajo.lib
+  const route = trim(req.params['*'], '/')
+  const file = trim(`${base}/${route}`, '/')
+  if (path.extname(file) === '') return merge({}, handlePage.call(this, file, base, req), { ns: req.params.ns })
+  if (!fs.existsSync(file)) throw this.error('notfound')
+  return { type: 'assets', ns: req.params.ns, main: this.pageDetails(file, base, req, { removeExt: false }) }
+}
+
+export default pageInfo

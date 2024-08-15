@@ -1,4 +1,8 @@
 {
-  "alias": "page",
-  "prefix": "page"
+  "alias": "cms",
+  "prefix": "",
+  "page": {
+    "prefix": "page"
+  },
+  "routePathHandlers": ["page", "post"]
 }

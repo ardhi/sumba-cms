@@ -1,0 +1,33 @@
+<% if (page.children.length > 0) { %>
+<ul class="page-children">
+  <% for (const item of page.children) { %>
+  <li<% if (item.active) print(' class="active"') %>>
+    <a href="<%= item.permalink %>"><%= item.title %></a>
+  <% } %>
+</ul>
+<% } %>
+
+<% if (page.siblings.length > 0) { %>
+<ul class="page-siblings">
+  <%
+  for (const item of page.siblings) { if (item.active) { %>
+  <li class="active"><%= item.title %></li>
+  <% } else { %>
+  <li><a href="<%= item.permalink %>"><%= item.title %></a></li>
+  <% }} %>
+</ul>
+<% } %>
+
+<% if (page.index) { %>
+  <div class="page-index">
+  Index: <a href="<%= page.index.permalink %>"><%= page.index.title %></a>
+</div>
+<% } %>
+
+<% if (page.up) { %>
+<div class="page-up">
+  Up: <a href="<%= page.up.permalink %>"><%= page.up.title %></a>
+</div>
+<% } %>
+
+<c:page-end />

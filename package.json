@@ -1,7 +1,7 @@
 {
-  "name": "sumba-page",
+  "name": "sumba-cms",
   "version": "1.0.0",
-  "description": "Page support for Waibu MPA",
+  "description": "CMS for Waibu MPA",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,15 +9,15 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ardhi/sumba-page.git"
+    "url": "git+https://github.com/ardhi/sumba-cms.git"
   },
   "keywords": [
     "waibu",
-    "page",
+    "cms",
     "sumba",
     "bajo",
     "framework",
-    "page"
+    "cms"
   ],
   "author": "Ardhi Lukianto <ardhi@lukianto.com>",
   "license": "MIT"
