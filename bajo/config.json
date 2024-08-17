@@ -4,5 +4,6 @@
   "page": {
     "prefix": "page"
   },
-  "routePathHandlers": ["page", "post"]
+  "routePathHandlers": ["page", "post"],
+  "dependencies": ["waibu-mpa"]
 }

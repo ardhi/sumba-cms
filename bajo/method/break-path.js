@@ -1,7 +1,8 @@
 function breakPath (route, delimiter = '/') {
-  const { trim, last } = this.app.bajo.lib._
+  const { trim, last, without } = this.app.bajo.lib._
+
   route = trim(route, delimiter)
-  const parts = route.split(delimiter)
+  const parts = without(route.split(delimiter), '')
   const routes = []
   for (const p of parts) {
     const l = last(routes)

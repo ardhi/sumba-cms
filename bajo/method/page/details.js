@@ -16,9 +16,9 @@ function pageDetails (file, base, req, { removeExt = true, active } = {}) {
   let title = titleize(last(route.split('/')))
   if (title === '') title = req.params.ns
   if (!isDir) {
-    const parsed = parse(file, { readFile: true })
-    const meta = parseObject(parsed.meta, { parseValue: true, i18n: req.i18n, plugin: this })
-    if (meta.title) title = meta.title
+    const parsed = parse(file, { readFile: true, parseContent: false })
+    const frontMatter = parseObject(parsed.frontMatter, { parseValue: true, i18n: req.i18n, plugin: this })
+    if (frontMatter.title) title = frontMatter.title
   }
   return {
     title,

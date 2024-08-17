@@ -1,13 +1,12 @@
 import path from 'path'
+import { getFiles } from './_lib.js'
 
 function pageSiblings (file, base, req) {
-  const { fastGlob } = this.app.bajo.lib
-  const { map, filter } = this.app.bajo.lib._
-  const types = ['', ...this.types]
+  const { map } = this.app.bajo.lib._
 
-  const pattern = [`${path.dirname(file)}/*`, `!${path.dirname(file)}/index.md`]
-  const files = fastGlob.globSync(pattern, { onlyFiles: false })
-  return map(filter(files, f => types.includes(path.extname(f))), f => {
+  const dir = path.dirname(file)
+  const files = getFiles.call(this, dir)
+  return map(files, f => {
     const opts = { active: f === file }
     return this.pageDetails(f, base, req, opts)
   })

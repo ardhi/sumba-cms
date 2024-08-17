@@ -1,0 +1,51 @@
+<c:page-start title="<%= page.main.title %>" />
+
+<% if (page.index) { %>
+  Breadcrumb:
+  <ul class="page-breadcrumb">
+    <li>
+      <a href="<%= page.index.permalink %>"><%= page.index.title %></a>
+    </li>
+  <% for (const b of page.breadcrumb) { %>
+    <% if (b.active) { %>
+    <li><%= b.title %></li>
+    <% } else { %>
+    <li><a href="<%= b.permalink %>"><%= b.title %></a></li>
+    <% } %>
+  <% } %>
+  </ul>
+<% } %>
+{content}
+<% if (page.children.length > 0) { %>
+  <ul class="page-children">
+    <% for (const item of page.children) { %>
+    <li<% if (item.active) print(' class="active"') %>>
+      <a href="<%= item.permalink %>"><%= item.title %></a>
+    <% } %>
+  </ul>
+  <% } %>
+
+  <% if (page.siblings.length > 0) { %>
+  <ul class="page-siblings">
+    <%
+    for (const item of page.siblings) { if (item.active) { %>
+    <li class="active"><%= item.title %></li>
+    <% } else { %>
+    <li><a href="<%= item.permalink %>"><%= item.title %></a></li>
+    <% }} %>
+  </ul>
+  <% } %>
+
+  <% if (page.prev) { %>
+  <div class="page-prev">
+    Prev: <a href="<%= page.prev.permalink %>"><%= page.prev.title %></a>
+  </div>
+  <% } %>
+
+  <% if (page.next) { %>
+  <div class="page-next">
+    Next: <a href="<%= page.next.permalink %>"><%= page.next.title %></a>
+  </div>
+  <% } %>
+
+  <c:page-end />
