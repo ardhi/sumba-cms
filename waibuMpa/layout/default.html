@@ -15,7 +15,7 @@
   <% } %>
   </ul>
 <% } %>
-{content}
+<!-- content -->
 <% if (page.children.length > 0) { %>
   <ul class="page-children">
     <% for (const item of page.children) { %>
@@ -23,9 +23,9 @@
       <a href="<%= item.permalink %>"><%= item.title %></a>
     <% } %>
   </ul>
-  <% } %>
+<% } %>
 
-  <% if (page.siblings.length > 0) { %>
+<% if (page.siblings.length > 0) { %>
   <ul class="page-siblings">
     <%
     for (const item of page.siblings) { if (item.active) { %>
@@ -34,18 +34,18 @@
     <li><a href="<%= item.permalink %>"><%= item.title %></a></li>
     <% }} %>
   </ul>
-  <% } %>
+<% } %>
 
-  <% if (page.prev) { %>
+<% if (page.prev) { %>
   <div class="page-prev">
     Prev: <a href="<%= page.prev.permalink %>"><%= page.prev.title %></a>
   </div>
-  <% } %>
+<% } %>
 
-  <% if (page.next) { %>
+<% if (page.next) { %>
   <div class="page-next">
     Next: <a href="<%= page.next.permalink %>"><%= page.next.title %></a>
   </div>
-  <% } %>
+<% } %>
 
-  <c:page-end />
+<c:page-end />

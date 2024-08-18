@@ -4,7 +4,11 @@ function routePath (name) {
 
   const { ns, path, subNs } = breakNsPath(name)
   const plugin = getPlugin(ns)
-  const fullPath = `${this.config.prefix}/${subNs}/${plugin.alias}/${path}`
+  let fullPath = `${this.config.prefix}/${subNs}/${path}`
+  if (subNs.startsWith('virtual')) {
+    fullPath = `${this.config.prefix}/${subNs.slice(7)}` +
+      `/${this.app.waibu.config.prefixVirtual}/${plugin.alias}/${path}`
+  }
   return `/${trim(fullPath.replaceAll('//', '/'), '/')}`
 }
 

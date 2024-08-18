@@ -26,8 +26,7 @@ function handlePage (ofile, base, req) {
   const next = this.pageNext(file, base, req, { siblings })
   const prev = this.pagePrev(file, base, req, { siblings, up })
   const breadcrumb = this.pageBreadcrumb(file, base, req)
-  const result = { type, main, siblings, children, up, index, prev, next, breadcrumb }
-  return result
+  return { type, main, siblings, children, up, index, prev, next, breadcrumb }
 }
 
 async function pageInfo (req, base = '') {
