@@ -1,14 +1,14 @@
 import path from 'path'
 const statProps = ['size', 'mtime', 'birthtime']
 
-function pageDetails (file, base, req, { removeExt = true, active } = {}) {
+function pageDetails (file, base, req, { removeExt = true, active, originalBase, props = [] } = {}) {
   const { titleize, parseObject } = this.app.bajo
   const { fs } = this.app.bajo.lib
   const { trim, pick, last } = this.app.bajo.lib._
   const { parse } = this.app.bajoMarkdown
   const types = ['', ...this.types]
 
-  let route = trim(file.replace(base, ''), '/')
+  let route = trim(file.replace(originalBase ?? base, ''), '/')
   if (removeExt) {
     for (const t of types) route = route.replace(t, '')
   }
@@ -22,7 +22,7 @@ function pageDetails (file, base, req, { removeExt = true, active } = {}) {
   }
   const subNs = req.routeOptions.config.virtual ? 'virtualpage' : 'page'
   const permalink = this.routePath(`${req.params.ns}.${subNs}:/${route}`)
-  return {
+  const result = {
     title,
     active,
     route,
@@ -31,6 +31,7 @@ function pageDetails (file, base, req, { removeExt = true, active } = {}) {
     file,
     stat: pick(fs.statSync(file), statProps)
   }
+  return props.length === 0 ? result : pick(result, props)
 }
 
 export default pageDetails

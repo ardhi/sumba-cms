@@ -26,7 +26,8 @@ function handlePage (ofile, base, req) {
   const next = this.pageNext(file, base, req, { siblings })
   const prev = this.pagePrev(file, base, req, { siblings, up })
   const breadcrumb = this.pageBreadcrumb(file, base, req)
-  return { type, main, siblings, children, up, index, prev, next, breadcrumb }
+  const toc = req.params['*'] === '' ? this.pageToc(null, base, req, { originalBase: base, props: ['title', 'permalink'] }) : undefined
+  return { type, main, siblings, children, up, index, prev, next, breadcrumb, toc }
 }
 
 async function pageInfo (req, base = '') {

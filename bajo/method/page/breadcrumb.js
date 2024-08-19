@@ -7,7 +7,6 @@ function breadcrumb (file, base, req) {
     const opts = { active: f === file }
     return this.pageDetails(f, base, req, opts)
   })
-  console.log(result)
   return result
 }
 

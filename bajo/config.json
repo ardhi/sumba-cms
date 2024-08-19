@@ -5,6 +5,10 @@
     "prefix": "page",
     "virtual": false
   },
+  "post": {
+    "prefix": "post",
+    "route": "/:year/:month/:date/:slug"
+  },
   "routePathHandlers": ["page", "post"],
   "dependencies": ["waibu-mpa"]
 }
