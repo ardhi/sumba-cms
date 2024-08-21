@@ -3,7 +3,8 @@
   "prefix": "",
   "page": {
     "prefix": "page",
-    "virtual": false
+    "prefixDocs": "docs",
+    "virtual": true
   },
   "post": {
     "prefix": "post",

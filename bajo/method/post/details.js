@@ -16,7 +16,7 @@ function postDetails (file, req) {
   const parsed = parse(file, { readFile: true, parseContent: false })
   const frontMatter = parseObject(parsed.frontMatter, { parseValue: true, i18n: req.i18n, plugin: this })
   if (frontMatter.title) title = frontMatter.title
-  if (!isVisibleByFm.call(this, frontMatter)) return
+  if (!isVisibleByFm.call(this, frontMatter, req)) return
   const permalink = this.routePath(`${this.name}.post:${route}`)
   return {
     title,

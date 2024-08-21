@@ -1,35 +1,38 @@
 import path from 'path'
 
-export function isVisibleByFm (frontMatter) {
+export function isVisibleByFm (frontMatter, req = {}) {
   const { env } = this.app.bajo.config
-  return frontMatter.status === 'PUBLISHED' || (frontMatter.status === 'DRAFT' && env === 'dev')
+  req.params = req.params ?? {}
+  return req.params.docs || frontMatter.status === 'PUBLISHED' || (frontMatter.status === 'DRAFT' && env === 'dev')
 }
 
-export function isVisible (file) {
+export function isVisible (file, req = {}) {
   const { parse } = this.app.bajoMarkdown
   const { fs } = this.app.bajo.lib
+  req.params = req.params ?? {}
 
   if (path.extname(file) === '') {
-    const dir = `${file}/index.md`
+    const dir = `${file}/_index.md`
     if (!fs.existsSync(dir)) return true
     file = dir
   }
   const { frontMatter } = parse(file, { readFile: true, parseContent: false })
-  return isVisibleByFm.call(this, frontMatter)
+  return isVisibleByFm.call(this, frontMatter, req)
 }
 
-export function getFiles (dir) {
+export function getFiles (dir, req = {}) {
   const { fs, fastGlob } = this.app.bajo.lib
   const { filter, map } = this.app.bajo.lib._
   const { parse } = this.app.bajoMarkdown
   const types = ['', ...this.types]
+  req.params = req.params ?? {}
 
   function getAll (d) {
-    const pattern = [`${d}/*`, `!${d}/index.md`]
+    const pattern = [`${d}/*`, `!${d}/_index.md`]
     return fastGlob.globSync(pattern, { onlyFiles: false })
   }
 
-  const file = `${dir}/index.md`
+  const file = `${dir}/_index.md`
   const index = fs.existsSync(file)
   let files = []
   if (index) {
@@ -39,10 +42,9 @@ export function getFiles (dir) {
       else files = getAll(dir)
     }
   } else files = getAll(dir)
-  files = filter(files, f => {
+  return filter(files, f => {
     const byType = types.includes(path.extname(f))
-    const byVisibility = isVisible.call(this, f)
+    const byVisibility = req.params.docs || isVisible.call(this, f)
     return byType && byVisibility
   })
-  return files
 }

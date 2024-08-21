@@ -20,7 +20,8 @@ function pageDetails (file, base, req, { removeExt = true, active, originalBase,
     const frontMatter = parseObject(parsed.frontMatter, { parseValue: true, i18n: req.i18n, plugin: this })
     if (frontMatter.title) title = frontMatter.title
   }
-  const subNs = req.routeOptions.config.virtual ? 'virtualpage' : 'page'
+  let subNs = req.routeOptions.config.virtual ? 'virtualpage' : 'page'
+  if (req.params.docs) subNs = 'doc'
   const permalink = this.routePath(`${req.params.ns}.${subNs}:/${route}`)
   const result = {
     title,

@@ -5,7 +5,7 @@ function pageChildren (dir, base, req) {
   const { map } = this.app.bajo.lib._
 
   if (path.extname(dir) !== '') return []
-  const files = getFiles.call(this, dir)
+  const files = getFiles.call(this, dir, req)
   return map(files, f => this.pageDetails(f, base, req))
 }
 

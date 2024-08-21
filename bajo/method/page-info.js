@@ -16,7 +16,7 @@ function handlePage (ofile, base, req) {
     }
   }
   if (!file) throw this.error('notfound')
-  if (!isVisible.call(this, file)) throw this.error('notfound')
+  if (!isVisible.call(this, file, req)) throw this.error('notfound')
 
   const main = this.pageDetails(file, base, req)
   const siblings = this.pageSiblings(file, base, req)
