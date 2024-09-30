@@ -17,7 +17,7 @@ function pageDetails (file, base, req, { removeExt = true, active, originalBase,
   if (title === '') title = req.params.ns
   if (!isDir) {
     const parsed = parse(file, { readFile: true, parseContent: false })
-    const frontMatter = parseObject(parsed.frontMatter, { parseValue: true, i18n: req.i18n, plugin: this })
+    const frontMatter = parseObject(parsed.frontMatter, { parseValue: true, i18n: req.i18n, ns: this.name })
     if (frontMatter.title) title = frontMatter.title
   }
   let subNs = req.routeOptions.config.virtual ? 'virtualpage' : 'page'
