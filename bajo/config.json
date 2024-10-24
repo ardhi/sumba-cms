@@ -1,6 +1,7 @@
 {
-  "alias": "cms",
-  "prefix": "",
+  "waibu": {
+    "prefix": ""
+  },
   "page": {
     "prefix": "page",
     "prefixDocs": "docs",
