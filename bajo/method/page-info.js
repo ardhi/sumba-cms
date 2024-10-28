@@ -15,8 +15,8 @@ function handlePage (ofile, base, req) {
       break
     }
   }
-  if (!file) throw this.error('notfound')
-  if (!isVisible.call(this, file, req)) throw this.error('notfound')
+  if (!file) throw this.error('notFound')
+  if (!isVisible.call(this, file, req)) throw this.error('notFound')
 
   const main = this.pageDetails(file, base, req)
   const siblings = this.pageSiblings(file, base, req)
@@ -36,7 +36,7 @@ async function pageInfo (req, base = '') {
   const route = trim(req.params['*'], '/')
   const file = trim(`${base}/${route}`, '/')
   if (path.extname(file) === '') return merge({}, handlePage.call(this, file, base, req), { ns: req.params.ns })
-  if (!fs.existsSync(file)) throw this.error('notfound')
+  if (!fs.existsSync(file)) throw this.error('notFound')
   return { type: 'assets', ns: req.params.ns, main: this.pageDetails(file, base, req, { removeExt: false }) }
 }
 

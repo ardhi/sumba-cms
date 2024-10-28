@@ -6,9 +6,9 @@ async function postInfo (req, base = '') {
   const day = req.params.day ?? '*'
   const pattern = `${base}/${year}/${month}/${day}/${req.params.slug}.{md,html}`
   const file = fastGlob.globSync(pattern)[0]
-  if (!file) throw this.error('notfound')
+  if (!file) throw this.error('notFound')
   const main = this.postDetails(file, req)
-  if (!main) throw this.error('notfound')
+  if (!main) throw this.error('notFound')
   return { type: 'posts', main }
 }
 
