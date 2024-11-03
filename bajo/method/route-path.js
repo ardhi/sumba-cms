@@ -1,11 +1,11 @@
 function routePath (name) {
   const { breakNsPath, getPlugin } = this.app.bajo
-  const { getAppPrefix } = this.app.waibu
+  const { getPluginPrefix } = this.app.waibu
   const { trim } = this.app.bajo.lib._
 
   const { ns, path, subNs } = breakNsPath(name)
   const plugin = getPlugin(ns)
-  const prefix = getAppPrefix(this.name)
+  const prefix = getPluginPrefix(this.name)
   let fullPath = `${prefix}/${subNs}/${path}`
   if (subNs === 'doc') {
     fullPath = `${prefix}/${this.config.page.prefixDocs}/${plugin.alias}/${path}`
