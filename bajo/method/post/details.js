@@ -14,7 +14,7 @@ function postDetails (file, req) {
 
   let title = titleize(path.basename(file))
   const parsed = parse(file, { readFile: true, parseContent: false })
-  const frontMatter = parseObject(parsed.frontMatter, { parseValue: true, i18n: req.i18n, ns: this.name })
+  const frontMatter = parseObject(parsed.frontMatter, { parseValue: true, lang: req.lang, ns: this.name })
   if (frontMatter.title) title = frontMatter.title
   if (!isVisibleByFm.call(this, frontMatter, req)) return
   const permalink = this.routePath(`${this.name}.post:${route}`)
