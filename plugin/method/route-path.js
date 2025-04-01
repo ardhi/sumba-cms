@@ -1,7 +1,7 @@
 function routePath (name) {
   const { breakNsPath, getPlugin } = this.app.bajo
   const { getPluginPrefix } = this.app.waibu
-  const { trim } = this.app.bajo.lib._
+  const { trim } = this.lib._
 
   const { ns, path, subNs } = breakNsPath(name)
   const plugin = getPlugin(ns)

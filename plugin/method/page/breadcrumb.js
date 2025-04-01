@@ -1,5 +1,5 @@
 function breadcrumb (file, base, req) {
-  const { trim, map } = this.app.bajo.lib._
+  const { trim, map } = this.lib._
 
   const route = trim(file.replace(base, ''), '/')
   const result = map(this.breakPath(route), r => {

@@ -8,7 +8,7 @@ export function isVisibleByFm (frontMatter, req = {}) {
 
 export function isVisible (file, req = {}) {
   const { parse } = this.app.bajoMarkdown
-  const { fs } = this.app.bajo.lib
+  const { fs } = this.lib
   req.params = req.params ?? {}
 
   if (path.extname(file) === '') {
@@ -21,8 +21,8 @@ export function isVisible (file, req = {}) {
 }
 
 export function getFiles (dir, req = {}) {
-  const { fs, fastGlob } = this.app.bajo.lib
-  const { filter, map } = this.app.bajo.lib._
+  const { fs, fastGlob } = this.lib
+  const { filter, map } = this.lib._
   const { parse } = this.app.bajoMarkdown
   const types = ['', ...this.types]
   req.params = req.params ?? {}

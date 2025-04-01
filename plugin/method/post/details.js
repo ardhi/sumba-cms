@@ -5,8 +5,8 @@ const statProps = ['size', 'mtime', 'birthtime']
 
 function postDetails (file, req) {
   const { titleize, parseObject, getPluginDataDir } = this.app.bajo
-  const { fs } = this.app.bajo.lib
-  const { pick } = this.app.bajo.lib._
+  const { fs } = this.lib
+  const { pick } = this.lib._
   const { parse } = this.app.bajoMarkdown
   const base = `${getPluginDataDir(this.name)}/posts`
   const ext = path.extname(file)

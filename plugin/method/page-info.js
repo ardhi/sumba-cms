@@ -2,8 +2,8 @@ import path from 'path'
 import { isVisible } from './page/_lib.js'
 
 function handlePage (ofile, base, req) {
-  const { fs } = this.app.bajo.lib
-  const { last } = this.app.bajo.lib._
+  const { fs } = this.lib
+  const { last } = this.lib._
   const types = ['', ...this.types]
   const type = last(base.split('/'))
 
@@ -31,8 +31,8 @@ function handlePage (ofile, base, req) {
 }
 
 async function pageInfo (req, base = '') {
-  const { trim, merge } = this.app.bajo.lib._
-  const { fs } = this.app.bajo.lib
+  const { trim, merge } = this.lib._
+  const { fs } = this.lib
   const route = trim(req.params['*'], '/')
   const file = trim(`${base}/${route}`, '/')
   if (path.extname(file) === '') return merge({}, handlePage.call(this, file, base, req), { ns: req.params.ns })

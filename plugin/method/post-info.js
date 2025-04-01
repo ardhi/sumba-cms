@@ -1,5 +1,5 @@
 async function postInfo (req, base = '') {
-  const { fastGlob } = this.app.bajo.lib
+  const { fastGlob } = this.lib
 
   const year = req.params.year ?? '*'
   const month = req.params.month ?? '*'

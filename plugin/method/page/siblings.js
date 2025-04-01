@@ -2,7 +2,7 @@ import path from 'path'
 import { getFiles } from './_lib.js'
 
 function pageSiblings (file, base, req) {
-  const { map } = this.app.bajo.lib._
+  const { map } = this.lib._
 
   const dir = path.dirname(file)
   const files = getFiles.call(this, dir, req)

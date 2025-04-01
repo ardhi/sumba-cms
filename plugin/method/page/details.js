@@ -3,8 +3,8 @@ const statProps = ['size', 'mtime', 'birthtime']
 
 function pageDetails (file, base, req, { removeExt = true, active, originalBase, props = [] } = {}) {
   const { titleize, parseObject } = this.app.bajo
-  const { fs } = this.app.bajo.lib
-  const { trim, pick, last } = this.app.bajo.lib._
+  const { fs } = this.lib
+  const { trim, pick, last } = this.lib._
   const { parse } = this.app.bajoMarkdown
   const types = ['', ...this.types]
 

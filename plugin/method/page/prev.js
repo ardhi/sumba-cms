@@ -1,5 +1,5 @@
 function prev (file, base, req, { siblings = [], up } = {}) {
-  const { findIndex, last } = this.app.bajo.lib._
+  const { findIndex, last } = this.lib._
 
   let idx = findIndex(siblings, { file })
   if (idx === -1) return
