@@ -4,7 +4,8 @@ import { isVisibleByFm } from '../page/_lib.js'
 const statProps = ['size', 'mtime', 'birthtime']
 
 function postDetails (file, req) {
-  const { titleize, parseObject, getPluginDataDir } = this.app.bajo
+  const { parseObject, getPluginDataDir } = this.app.bajo
+  const { titleize } = this.lib.aneka
   const { fs } = this.lib
   const { pick } = this.lib._
   const { parse } = this.app.bajoMarkdown

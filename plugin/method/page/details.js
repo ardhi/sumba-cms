@@ -2,7 +2,8 @@ import path from 'path'
 const statProps = ['size', 'mtime', 'birthtime']
 
 function pageDetails (file, base, req, { removeExt = true, active, originalBase, props = [] } = {}) {
-  const { titleize, parseObject } = this.app.bajo
+  const { parseObject } = this.app.bajo
+  const { titleize } = this.lib.aneka
   const { fs } = this.lib
   const { trim, pick, last } = this.lib._
   const { parse } = this.app.bajoMarkdown
