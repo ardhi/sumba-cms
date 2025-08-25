@@ -1,11 +1,12 @@
 async function factory (pkgName) {
   const me = this
 
-  return class SumbaCms extends this.lib.Plugin {
+  class SumbaCms extends this.lib.Plugin {
+    static alias = 'cms'
+    static dependencies = ['waibu-mpa']
+
     constructor () {
       super(pkgName, me.app)
-      this.alias = 'cms'
-      this.dependencies = ['waibu-mpa']
       this.config = {
         waibu: {
           prefix: ''
@@ -20,6 +21,8 @@ async function factory (pkgName) {
       }
     }
   }
+
+  return SumbaCms
 }
 
 export default factory
