@@ -1,7 +1,7 @@
 async function factory (pkgName) {
   const me = this
 
-  class SumbaCms extends this.lib.Plugin {
+  class SumbaCms extends this.app.pluginClass.base {
     static alias = 'cms'
     static dependencies = ['waibu-mpa']
 
