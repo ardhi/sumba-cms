@@ -1,0 +1,4 @@
+- name: General
+  siteId: "?:SumbaSite::alias:default"
+- name: Misc
+  siteId: "?:SumbaSite::alias:default"

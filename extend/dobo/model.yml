@@ -1,0 +1,4 @@
+- baseName: post-cat
+  features:
+  - "sumba:category"
+  - "sumba:siteId"

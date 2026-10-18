@@ -1,0 +1,11 @@
+common:
+  layout:
+    - name: "meta"
+      fields: ["id"]
+    - name: "general"
+      fields: ["name:9-md", "level:3-md"]
+view:
+  add:
+    hidden: ["id"]
+  edit:
+    readonly: ["id"]

@@ -12,18 +12,25 @@ async function factory (pkgName) {
    *
    * @class
    */
-  class SumbaCms extends this.app.pluginClass.base {
-    static alias = 'cms'
-    static dependencies = ['waibu-mpa']
-
+  class SumbaCms extends this.app.baseClass.Base {
     constructor () {
       super(pkgName, me.app)
+      const prefix = 'cms'
+      const params = { action: 'list' }
       this.config = {
-        waibu: {
-          prefix: ''
+        waibuMpa: {
+          logo: 'newspaper',
+          icon: 'newspaper',
+          redirect: {},
+          redirectSubRoute: {
+          }
         },
-        page: {
-          prefix: 'page'
+        waibuAdmin: {
+          modelDisabled: 'all',
+          menuHandler: [
+            { title: 'post', href: `waibuAdmin:/${prefix}/post/:action`, params },
+            { title: 'postCat', href: `waibuAdmin:/${prefix}/post-cat/:action`, params }
+          ]
         },
         post: {
           prefix: 'post',

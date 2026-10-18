@@ -1,0 +1,9 @@
+statusDraft: "Draft"
+statusPublished: "Published"
+post: "Post"
+postCat: "Post Category"
+sumbaCms: "Content Management"
+field:
+  title: "Title"
+  content: "Content"
+  excerpt: "Excerpt"

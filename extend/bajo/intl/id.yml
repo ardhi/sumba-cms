@@ -1,0 +1,9 @@
+statusDraft: "Rancangan"
+statusPublished: "Diterbitkan"
+post: "Artikel"
+postCat: "Kategori Artikel"
+sumbaCms: "Manajemen Konten"
+field:
+  title: "Judul"
+  content: "Konten"
+  excerpt: "Cuplikan"
