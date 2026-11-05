@@ -28,7 +28,13 @@ async function post () {
     },
     view: {
       list: {
-        fields: ['id', 'title', 'category', 'status', 'createdAt', 'updatedAt']
+        fields: ['id', 'title', 'category', 'status', 'createdAt', 'updatedAt'],
+        stat: {
+          aggregate: [
+            { fields: ['status'], group: 'status', aggregate: ['count'] },
+            { fields: ['category'], group: 'category', aggregate: ['count'] }
+          ]
+        }
       },
       add: {
         hidden: ['id']

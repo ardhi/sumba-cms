@@ -1,11 +1,17 @@
 common:
   layout:
-    - name: "meta"
-      fields: ["id"]
-    - name: "general"
-      fields: ["name:9-md", "level:3-md"]
+    - name: meta
+      fields: [id]
+    - name: general
+      fields: [name:9-md, level:3-md]
 view:
+  list:
+    stat:
+      aggregate:
+        - fields: [level]
+          group: level 
+          aggregate: [count]
   add:
-    hidden: ["id"]
+    hidden: [id]
   edit:
-    readonly: ["id"]
+    readonly: [id]
