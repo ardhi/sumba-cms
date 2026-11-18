@@ -3,6 +3,7 @@ statusPublished: "Diterbitkan"
 post: "Artikel"
 postCat: "Kategori Artikel"
 sumbaCms: "Manajemen Konten"
+news: "Berita"
 field:
   title: "Judul"
   content: "Konten"

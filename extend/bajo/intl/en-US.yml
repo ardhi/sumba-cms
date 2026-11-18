@@ -3,6 +3,7 @@ statusPublished: "Published"
 post: "Post"
 postCat: "Post Category"
 sumbaCms: "Content Management"
+news: "News"
 field:
   title: "Title"
   content: "Content"

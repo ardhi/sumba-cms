@@ -18,9 +18,23 @@ async function factory (pkgName) {
       const prefix = 'cms'
       const params = { action: 'list' }
       this.config = {
+        waibu: {
+          prefix
+        },
         waibuMpa: {
+          prefix: '',
           logo: 'newspaper',
           icon: 'newspaper',
+          /*
+          menuHandler: [{
+            title: 'news',
+            children: [{
+              title: 'post',
+              href: 'sumbaCms:/post'
+            }]
+          }],
+          */
+          menuHandler: [],
           redirect: {},
           redirectSubRoute: {
           }
@@ -35,6 +49,10 @@ async function factory (pkgName) {
         post: {
           prefix: 'post',
           route: '/:year/:month/:date/:slug'
+        },
+        page: {
+          prefix: '',
+          route: '/**'
         }
       }
     }
