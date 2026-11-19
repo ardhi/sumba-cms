@@ -1,0 +1,37 @@
+<c:grid-row gutter="4">
+  <c:grid-col col="9-lg 8-md">
+  <% if (posts.data.length === 0) { %>
+    <p>No posts available.</p>
+  <% } else { %>
+    <c:grid-row gutter="2">
+    <% for (const post of posts.data) { %>
+      <% const media = (post._attachment ?? [])[0] %>
+      <c:grid-col col="12-md 6-lg">
+        <c:card dim="height:100">
+          <c:card-header padding="all-0">
+            <c:media src="<%= media.url %>" responsive no-controls el-class="rounded-top-3" />
+          </c:card-header>
+          <c:card-body><%= post.excerpt %></c:card-body>
+          <c:card-footer flex="justify-content:end">
+            <c:btn color="link-outline" icon-end="arrowEnd" t:content="more" href="?post=<%= post.id %>" />
+          </c:card-footer>
+        </c:card>
+      </c:grid-col>
+    <% } %>
+    </c:grid-row>
+  <% } %>
+  </c:grid-col>
+  <c:grid-col col="3-lg 4-md">
+    <c:card margin="bottom-4" padding="all-2">
+      <c:wdb-query no-submit-button/>
+    </c:card>
+    <c:card>
+      <c:card-header tag="h6" t:content="category" />
+      <c:list type="group" hover>
+        <% for (const cat of categories) { %>
+        <c:list-item t:content="<%= cat.name %>" href="?category=<%= cat.name %>"/>
+        <% } %>
+      </c:list>
+    </c:card>
+  </c:grid-col>
+</c:grid-row>

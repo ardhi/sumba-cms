@@ -25,7 +25,6 @@ async function factory (pkgName) {
           prefix: '',
           logo: 'newspaper',
           icon: 'newspaper',
-          /*
           menuHandler: [{
             title: 'news',
             children: [{
@@ -33,8 +32,6 @@ async function factory (pkgName) {
               href: 'sumbaCms:/post'
             }]
           }],
-          */
-          menuHandler: [],
           redirect: {},
           redirectSubRoute: {
           }
