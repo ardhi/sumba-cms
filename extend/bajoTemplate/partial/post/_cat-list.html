@@ -1,0 +1,18 @@
+<c:grid-col col="3-lg 4-md">
+  <c:card margin="bottom-4" padding="all-2">
+    <c:wdb-query no-submit-button href="<%= _routePath('sumbaCms:/post') %>" />
+  </c:card>
+  <c:card>
+    <c:card-header tag="h6" padding="end-3">
+      <c:div flex="justify-content:between align-items:center">
+        <c:span t:content="field.category" />
+        <c:btn color="link" icon="grid" href="<%= _routePath('sumbaCms:/post') %>" padding="y-0 x-1" font="size:5"/>
+      </c:div>
+    </c:card-header>
+    <c:list type="group" hover>
+      <% for (const cat of categories) { %>
+      <c:list-item <% if (cat.name === (_meta.query.query ?? '').replace('category:', '')) { %>active<% } %> t:content="<%= cat.name %>" href="<%= _routePath('sumbaCms:/post?query=category:' + cat.name) %>" />
+      <% } %>
+    </c:list>
+  </c:card>
+</c:grid-col>

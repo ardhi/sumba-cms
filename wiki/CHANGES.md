@@ -1,5 +1,12 @@
 # Changes
 
+## 2026-11-22
+
+- [2.3.0] Menu `post` is now by default belongs to `home`
+- [2.3.0] Refactor `post.js` route
+- [2.3.0] Refactor `post-item.js` route
+- [2.3.0] Add some new templates & languages
+
 ## 2026-11-18
 
 - [2.2.0] Add stat widget on record lists

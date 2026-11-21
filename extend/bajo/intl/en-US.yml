@@ -1,10 +1,13 @@
-statusDraft: "Draft"
-statusPublished: "Published"
-post: "Post"
-postCat: "Post Category"
-sumbaCms: "Content Management"
-news: "News"
+statusDraft: Draft
+statusPublished: Published
+post: Post
+posts: Posts
+postCat: Post Category
+sumbaCms: Content Management
+news: News
+backToPostList: Back to Post List
 field:
-  title: "Title"
-  content: "Content"
-  excerpt: "Excerpt"
+  category: Category
+  title: Title
+  content: Content
+  excerpt: Excerpt

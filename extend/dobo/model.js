@@ -18,7 +18,7 @@ async function model () {
         }
       },
       'excerpt,text',
-      'content,text'
+      'content,text,,,true'
     ],
     features: [
       'dobo:createdAt',
@@ -26,22 +26,7 @@ async function model () {
       'sumba:siteId',
       { name: 'sumba:slug', fieldSource: 'title' },
       { name: 'sumba:status', default: 'DRAFT', values: ['PUBLISHED', 'INACTIVE', 'DRAFT'] }
-    ],
-    hooks: [{
-      name: 'afterAction',
-      handler: async function (name, ...args) {
-        const { isEmpty } = this.app.lib._
-        const { createExcerpt } = this.app.lib.aneka
-        if (['findRecord', 'findAllRecords'].includes(name)) {
-          const [, rec] = args
-          for (const row of rec.data) {
-            if (isEmpty(row.excerpt)) {
-              row.excerpt = createExcerpt({ content: row.content, maxWords: 25 })
-            }
-          }
-        }
-      }
-    }]
+    ]
   }]
 }
 

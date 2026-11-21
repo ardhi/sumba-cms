@@ -1,0 +1,25 @@
+<c:div move-to="#heading-end">
+  <c:btn color="secondary" icon="arrowStart" t:content="backToPostList" href="<%= _routePath('sumbaCms:/post') %>" />
+</c:div>
+<c:grid-row gutter="4">
+  <c:grid-col col="8-md 9-lg">
+    <% const media = (post.data._attachment ?? [])[0] ?? {} %>
+    <c:card dim="height:100">
+      <% if (media.url) { %>
+      <c:card-header padding="all-0">
+        <c:media ratio="16x9" src="<%= media.url %>" responsive el-class="rounded-top-3" />
+      </c:card-header>
+      <% } %>
+      <c:div border="side:bottom" padding="all-4 bottom-3">
+        <c:heading type="6" content="<%= post.data._fmt.updatedAt %>" />
+        <c:heading type="6-display" content="<%= post.data.title %>" />
+        <% if (!_.isEmpty(post.data.subTitle)) { %>
+        <c:heading type="5" content="<%= post.data.subTitle %>" />
+        <% } %>
+      </c:div>
+      <c:card-body>
+        <%= post.data.content %>
+      </c:card-body>
+    </c:card>
+  </c:grid-col>
+  <!-- include sumbaCms.partial:/post/_cat-list.html -->

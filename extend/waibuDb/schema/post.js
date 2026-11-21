@@ -5,7 +5,7 @@ async function post () {
       attachment: true,
       layout: [
         { name: 'meta', fields: ['id:3-md', 'createdAt:3-md', 'updatedAt:3-md', 'status:3-md'] },
-        { name: 'general', fields: ['title:12-md', 'subTitle:9-md', 'category:3-md', 'excerpt', 'content'] }
+        { name: 'general', fields: ['title:12-md', 'subTitle:9-md', 'category:3-md', 'slug:12', 'excerpt', 'content'] }
       ],
       widget: {
         content: {
@@ -37,10 +37,16 @@ async function post () {
         }
       },
       add: {
-        hidden: ['id']
+        hidden: ['id'],
+        page: {
+          features: ['slugify']
+        }
       },
       edit: {
-        readonly: ['id']
+        readonly: ['id'],
+        page: {
+          features: ['slugify']
+        }
       }
     }
   }

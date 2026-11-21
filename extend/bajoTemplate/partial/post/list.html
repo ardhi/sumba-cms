@@ -3,35 +3,80 @@
   <% if (posts.data.length === 0) { %>
     <p>No posts available.</p>
   <% } else { %>
+    <% const row1 = posts.data.slice(0, 2) %>
+    <% const row2 = posts.data.slice(2, 6) %>
+    <% const row3 = posts.data.slice(6) %>
     <c:grid-row gutter="2">
-    <% for (const post of posts.data) { %>
-      <% const media = (post._attachment ?? [])[0] %>
+    <% for (const post of row1) { %>
+      <% const media = (post._attachment ?? [])[0] ?? {} %>
       <c:grid-col col="12-md 6-lg">
         <c:card dim="height:100">
+          <% if (media.url) { %>
           <c:card-header padding="all-0">
-            <c:media src="<%= media.url %>" responsive no-controls el-class="rounded-top-3" />
+            <c:a href="<%= post.slug %>">
+              <c:media ratio="16x9" title="<%= post.title %>" src="<%= media.url %>" responsive no-controls el-class="rounded-top-3" />
+            </c:a>
           </c:card-header>
-          <c:card-body><%= post.excerpt %></c:card-body>
+          <% } else { %>
+          <c:a href="<%= post.slug %>">
+            <c:h5 content="<%= post.title %>" padding="all-4 bottom-0" margin="bottom-0" />
+          </c:a>
+          <% } %>
+          <c:card-body padding="y-3">
+            <c:heading type="6" content="<%= post._fmt.updatedAt %>" margin="bottom-2" />
+            <%= post.excerpt %>
+          </c:card-body>
           <c:card-footer flex="justify-content:end">
-            <c:btn color="link-outline" icon-end="arrowEnd" t:content="more" href="?post=<%= post.id %>" />
+            <c:btn color="link-outline" icon-end="arrowEnd" t:content="more" href="<%= post.slug %>" />
           </c:card-footer>
         </c:card>
       </c:grid-col>
     <% } %>
     </c:grid-row>
+    <c:grid-row gutter="2" margin="top-0">
+    <% for (const post of row2) { %>
+      <% const media = (post._attachment ?? [])[0] ?? {} %>
+      <c:grid-col col="6-md 3-lg">
+        <c:card dim="height:100">
+          <% if (media.url) { %>
+          <c:card-header padding="all-0" dim="height:100">
+            <c:a href="<%= post.slug %>">
+              <c:media ratio="16x9" title-icon-end="arrowEnd" title-date="<%= post._fmt.updatedAt %>" title-align-items="center" title-type="6" title="<%= _excerpt(post.title, 5) %>" src="<%= media.url %>" responsive no-controls el-class="rounded-3" />
+            </c:a>
+          </c:card-header>
+          <% } else { %>
+          <c:a href="<%= post.slug %>" flex="align-items:center" dim="height:100 width:100">
+            <c:h6 padding="all-4" margin="bottom-0">
+              <c:div content="<%= post._fmt.updatedAt %>" style="font-size:smaller"/>
+              <c:div icon-end="arrowEnd" margin="top-2" content="<%= _excerpt(post.title, 5) %>" />
+            </c:h6>
+          </c:a>
+          <% } %>
+        </c:card>
+      </c:grid-col>
+    <% } %>
+    </c:grid-row>
+    <% if (row3.length > 0) { %>
+    <c:heading type="5" t:content="morePosts" margin="top-5 bottom-3 start-3" />
+    <c:list type="unstyled">
+      <% for (const post of row3) { %>
+        <c:list-item margin="bottom-3">
+          <c:a href="<%= post.slug %>">
+            <c:badge background="color:secondary" margin="end-2" content="<%= post._fmt.updatedAt %>" />
+            <c:span font="weight:bold" content="<%= post.title %>" />
+          </c:a>
+          <c:div>
+            <%= post.excerpt %>
+            <c:a href="<%= post.slug %>" icon-end="arrowEnd" />
+          </c:div>
+        </c:list-item>
+      <% } %>
+    </c:list>
+    <% } %>
+    <c:div margin="top-4">
+    <!-- include waibuDb.partial:/crud/_list-footer.html|{ "dataKey": "posts" } -->
+    </c:div>
   <% } %>
   </c:grid-col>
-  <c:grid-col col="3-lg 4-md">
-    <c:card margin="bottom-4" padding="all-2">
-      <c:wdb-query no-submit-button/>
-    </c:card>
-    <c:card>
-      <c:card-header tag="h6" t:content="category" />
-      <c:list type="group" hover>
-        <% for (const cat of categories) { %>
-        <c:list-item t:content="<%= cat.name %>" href="?category=<%= cat.name %>"/>
-        <% } %>
-      </c:list>
-    </c:card>
-  </c:grid-col>
+  <!-- include sumbaCms.partial:/post/_cat-list.html -->
 </c:grid-row>

@@ -28,7 +28,13 @@ async function factory (pkgName) {
           menuHandler: [{
             title: 'news',
             children: [{
+              title: '-',
+              home: true,
+              level: -99
+            }, {
               title: 'post',
+              home: true,
+              level: -100,
               href: 'sumbaCms:/post'
             }]
           }],
@@ -52,6 +58,30 @@ async function factory (pkgName) {
           route: '/**'
         }
       }
+    }
+
+    formatPostItem = async (body = {}) => {
+      const { isEmpty, isArray, pick } = this.app.lib._
+      const { createExcerpt } = this.app.lib.aneka
+      const { formatContent } = this.app.bajoTemplate
+      const { routePath } = this.app.waibu
+
+      if (isEmpty(body.data)) return
+      const isDataArray = isArray(body.data)
+      if (!isDataArray) body.data = [body.data]
+      for (const d of body.data) {
+        if (isEmpty(d.excerpt)) {
+          d.excerpt = createExcerpt({ content: d.content, maxWords: 20 })
+        }
+        const params = pick(d, ['id', 'slug'])
+        params.date = d.createdAt.getDate()
+        params.month = d.createdAt.getMonth() + 1
+        params.year = d.createdAt.getFullYear()
+        const { prefix, route } = this.config.post
+        d.slug = routePath(`sumbaCms:/${prefix}/${route}`, { params })
+        d.content = formatContent(d.content, { smallHeading: true })
+      }
+      if (!isDataArray) body.data = body.data[0]
     }
   }
 
