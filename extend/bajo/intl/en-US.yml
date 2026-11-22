@@ -6,6 +6,7 @@ postCat: Post Category
 sumbaCms: Content Management
 news: News
 backToPostList: Back to Post List
+morePosts: More Posts
 field:
   category: Category
   title: Title

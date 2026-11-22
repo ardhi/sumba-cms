@@ -58,20 +58,24 @@
     </c:grid-row>
     <% if (row3.length > 0) { %>
     <c:heading type="5" t:content="morePosts" margin="top-5 bottom-3 start-3" />
-    <c:list type="unstyled">
-      <% for (const post of row3) { %>
-        <c:list-item margin="bottom-3">
-          <c:a href="<%= post.slug %>">
-            <c:badge background="color:secondary" margin="end-2" content="<%= post._fmt.updatedAt %>" />
-            <c:span font="weight:bold" content="<%= post.title %>" />
-          </c:a>
-          <c:div>
-            <%= post.excerpt %>
-            <c:a href="<%= post.slug %>" icon-end="arrowEnd" />
-          </c:div>
-        </c:list-item>
-      <% } %>
-    </c:list>
+    <c:card>
+      <c:card-body>
+        <c:list type="unstyled">
+          <% for (const post of row3) { %>
+            <c:list-item margin="bottom-3">
+              <c:a href="<%= post.slug %>">
+                <c:badge background="color:secondary" margin="end-2" content="<%= post._fmt.updatedAt %>" />
+                <c:span font="weight:bold" content="<%= post.title %>" />
+              </c:a>
+              <c:div>
+                <%= post.excerpt %>
+                <c:a href="<%= post.slug %>" icon-end="arrowEnd" />
+              </c:div>
+            </c:list-item>
+          <% } %>
+        </c:list>
+      </c:card-body>
+    </c:card>
     <% } %>
     <c:div margin="top-4">
     <!-- include waibuDb.partial:/crud/_list-footer.html|{ "dataKey": "posts" } -->

@@ -1,10 +1,12 @@
-statusDraft: "Rancangan"
-statusPublished: "Diterbitkan"
-post: "Artikel"
-postCat: "Kategori Artikel"
-sumbaCms: "Manajemen Konten"
-news: "Berita"
+statusDraft: Rancangan
+statusPublished: Diterbitkan
+post: Artikel
+postCat: Kategori Artikel
+sumbaCms: Manajemen Konten
+news: Berita
+backToPostList: Kembali ke Daftar Artikel
+morePosts: Artikel Lainnya
 field:
-  title: "Judul"
-  content: "Konten"
-  excerpt: "Cuplikan"
+  title: Judul
+  content: Konten
+  excerpt: Cuplikan

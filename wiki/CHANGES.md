@@ -6,6 +6,7 @@
 - [2.3.0] Refactor `post.js` route
 - [2.3.0] Refactor `post-item.js` route
 - [2.3.0] Add some new templates & languages
+- [2.3.1] Bug fix in `list.html` template
 
 ## 2026-11-18
 
