@@ -11,7 +11,8 @@
     </c:card-header>
     <c:list type="group" hover>
       <% for (const cat of categories) { %>
-      <c:list-item <% if (cat.name === (_meta.query.query ?? '').replace('category:', '')) { %>active<% } %> t:content="<%= cat.name %>" href="<%= _routePath('sumbaCms:/post?query=category:' + cat.name) %>" />
+      <% const href = _routePath("sumbaCms:/post?query=category:'" + cat.name + "'") %>
+      <c:list-item <% if (cat.name === (_meta.query.query ?? '').replace('category:', '')) { %>active<% } %> t:content="<%= cat.name %>" href="<%= href %>" />
       <% } %>
     </c:list>
   </c:card>
