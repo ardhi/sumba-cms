@@ -1,5 +1,9 @@
 # Changes
 
+## 2026-11-28
+
+- [2.4.0] Update on default layouts
+
 ## 2026-11-22
 
 - [2.3.0] Menu `post` is now by default belongs to `home`

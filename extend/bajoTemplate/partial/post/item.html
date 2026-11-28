@@ -1,7 +1,7 @@
 <c:div move-to="#heading-end">
   <c:btn color="secondary" icon="arrowStart" t:content="backToPostList" href="<%= _routePath('sumbaCms:/post') %>" />
 </c:div>
-<c:grid-row gutter="4">
+<c:grid-row gutter="2">
   <c:grid-col col="8-md 9-lg">
     <% const media = (post.data._attachment ?? [])[0] ?? {} %>
     <c:card dim="height:100">
